@@ -95,11 +95,16 @@ body * {
   transform: translateY(
     -50%
   ); /* estrategia de centralização no position: absolute*/
+
+  animation: slide-back 0.4s; /*redundante colocar o forward*/
 }
 
 .light #switch button {
-  right: 0;
-  left: initial; /*volta para sua forma inicial*/
+  animation: slide-in 0.4s forwards; /*mantém a animação nas propriedades finais*/
+}
+
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -184,5 +189,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animation*/
+@keyframes slide-in {
+  from{ /*onde começa*/
+    left: 0;
+  }
+  to{ /*onde termina*/
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
   }
 }
